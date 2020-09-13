@@ -2,6 +2,7 @@ package com.example.mysharedpreferencesappjava;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         email = findViewById(R.id.edEmail);
 
         sharedPreferences = getSharedPreferences(MyPreference,
-                getApplicationContext().MODE_PRIVATE);
+                Context.MODE_PRIVATE);
 
         if (sharedPreferences.contains(Name))
             name.setText(sharedPreferences.getString(Name, ""));
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(Name, nm);
         editor.putString(Email, em);
-        editor.commit();
+        editor.apply();
     }
 
     public void get(View view){
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         email = findViewById(R.id.edEmail);
 
         sharedPreferences = getSharedPreferences(MyPreference,
-                getApplicationContext().MODE_PRIVATE);
+                Context.MODE_PRIVATE);
 
         if (sharedPreferences.contains(Name))
             name.setText(sharedPreferences.getString(Name, ""));
